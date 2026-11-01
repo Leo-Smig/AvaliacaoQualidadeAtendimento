@@ -110,13 +110,8 @@ def avaliar_atendimento(tempo, cordialidade):
 
     regular = min(t_medio, c_media)
 
-    ruim = max(
-        min(t_lento, c_baixa),
-        min(t_lento, c_media),
-        min(t_lento, c_alta),
-        min(t_rapido, c_baixa),
-        min(t_medio, c_baixa)
-    )
+    ativacao_outras = max(excelente, boa, regular)
+    ruim = 1.0 - ativacao_outras
 
     # Defuzzificação por média ponderada
     qualidade_final = (
